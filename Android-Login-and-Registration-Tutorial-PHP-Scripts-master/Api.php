@@ -12,7 +12,7 @@
 				if(isTheseParametersAvailable(array('username','email','password','gender'))){
 					$username = $_POST['username']; 
 					$email = $_POST['email']; 
-					$password = md5($_POST['password']);
+					$password = $_POST['password'];
 					$gender = $_POST['gender']; 
 					
 					$stmt = $conn->prepare("SELECT id FROM users WHERE username = ? OR email = ?");
@@ -62,7 +62,7 @@
 				if(isTheseParametersAvailable(array('username', 'password'))){
 					
 					$username = $_POST['username'];
-					$password = md5($_POST['password']); 
+					$password = $_POST['password']; 
 					
 					$stmt = $conn->prepare("SELECT id, username, email, gender FROM users WHERE username = ? AND password = ?");
 					$stmt->bind_param("ss",$username, $password);
